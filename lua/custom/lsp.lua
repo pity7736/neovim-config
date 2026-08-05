@@ -1,3 +1,7 @@
+vim.lsp.config('*', {
+	capabilities = require('blink.cmp').get_lsp_capabilities(),
+})
+
 vim.lsp.enable({
 	'gopls',
 })
@@ -17,17 +21,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     --if client:supports_method('textDocument/implementation') then
       -- Create a keymap for vim.lsp.buf.implementation ...
     --end
-    -- Enable auto-completion. Note: Use CTRL-Y to select an item. |complete_CTRL-Y|
-    if client:supports_method('textDocument/completion') then
-      -- Optional: trigger autocompletion on EVERY keypress. May be slow!
-      -- local chars = {}; for i = 32, 126 do table.insert(chars, string.char(i)) end
-      -- client.server_capabilities.completionProvider.triggerCharacters = chars
-      vim.opt.completeopt = { 'menu', 'menuone', 'noinsert', 'fuzzy', 'popup' }
-      vim.lsp.completion.enable(true, client.id, args.buf, {autotrigger = true})
-      vim.keymap.set('i', '<C-Space>', function()
-        vim.lsp.completion.get()
-      end)
-    end
     -- Auto-format ("lint") on save.
     -- Usually not needed if server supports "textDocument/willSaveWaitUntil".
     if client:supports_method('textDocument/formatting') then
