@@ -5,6 +5,7 @@ vim.lsp.config('*', {
 vim.lsp.enable({
 	'gopls',
 	'rust_analyzer',
+	'kotlin_ls',
 })
 
 vim.diagnostic.config({
@@ -17,7 +18,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local opts = {buffer = args.buf, remap = false}
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "gd", function()
+      vim.g.lsp_last_gd_word = vim.fn.expand("<cword>")
+      vim.lsp.buf.definition()
+    end, opts)
     vim.keymap.set("n", "<leader>gd", function()
       vim.cmd("vsplit")
       vim.lsp.buf.definition()
