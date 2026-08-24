@@ -7,12 +7,14 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       { "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
+      "rouge8/neotest-rust",
     },
     config = function()
       local neotest_golang_opts = {}  -- Specify custom configuration
       require("neotest").setup({
         adapters = {
           require("neotest-golang")(neotest_golang_opts), -- Registration
+          require("neotest-rust"),
         },
       })
     end,

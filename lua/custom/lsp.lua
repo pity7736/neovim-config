@@ -4,6 +4,7 @@ vim.lsp.config('*', {
 
 vim.lsp.enable({
 	'gopls',
+	'rust_analyzer',
 })
 
 vim.diagnostic.config({
@@ -17,6 +18,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local opts = {buffer = args.buf, remap = false}
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "<leader>gd", function()
+      vim.cmd("vsplit")
+      vim.lsp.buf.definition()
+    end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     --if client:supports_method('textDocument/implementation') then
       -- Create a keymap for vim.lsp.buf.implementation ...

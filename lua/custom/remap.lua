@@ -1,3 +1,12 @@
+-- Keymaps also live next to the plugin they belong to:
+--   lua/custom/lsp.lua                 - gd, K (buffer-local, set in LspAttach)
+--   lua/custom/plugins/dap.lua         - bp, gb, ?, F1-F6 (debugging)
+--   lua/custom/plugins/luasnip.lua     - C-j, C-k (snippet expand/jump)
+--   lua/custom/plugins/gitsigns.lua    - hunk navigation/stage/reset
+--   after/plugin/telescope.lua         - ff, fg, fb, fh, ss
+--   after/plugin/harpoon.lua           - a, e, C-h/t/n/s/g/c, C-S-P/N
+--   after/plugin/undotree.lua          - u
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -26,7 +35,8 @@ vim.keymap.set("n", "<leader>ta", ':lua require("neotest").run.run({suite = true
 vim.keymap.set("n", "<leader>to", ':lua require("neotest").output.open()<CR>', {noremap = true, silent = true}) 
 vim.keymap.set("n", "<leader>tO", ':lua require("neotest").output.open({enter = true})<CR>', {noremap = true, silent = true}) 
 vim.keymap.set("n", "<leader>tp", ':lua require("neotest").output_panel.toggle()<CR>', {noremap = true, silent = true}) 
-vim.keymap.set("n", "<leader>ts", ':lua require("neotest").summary.toggle()<CR>', {noremap = true, silent = true}) 
+vim.keymap.set("n", "<leader>ts", ':lua require("neotest").summary.toggle()<CR>', {noremap = true, silent = true})
+vim.keymap.set("n", "<leader>tk", ':lua require("neotest").run.stop()<CR>', {noremap = true, silent = true})
 vim.keymap.set("n", "<leader><Enter>", 'o<ESC>')
 vim.keymap.set("n", "<leader><C-Enter>", 'O<ESC>')
 

@@ -4,7 +4,9 @@ return {
   config = function()
     local ls = require("luasnip")
 
-    ls.setup({})
+    ls.setup({
+      region_check_events = { "InsertEnter", "CursorMovedI" },
+    })
 
     vim.keymap.set({ "i", "s" }, "<C-j>", function()
       if ls.expand_or_jumpable() then
