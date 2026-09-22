@@ -6,6 +6,7 @@ vim.lsp.enable({
 	'gopls',
 	'rust_analyzer',
 	'kotlin_ls',
+	'pyright',
 })
 
 vim.diagnostic.config({

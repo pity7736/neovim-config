@@ -3,6 +3,7 @@ return {
     "mfussenegger/nvim-dap",
     dependencies = {
       "leoluz/nvim-dap-go",
+      "mfussenegger/nvim-dap-python",
       "rcarriga/nvim-dap-ui",
       "theHamsta/nvim-dap-virtual-text",
       "nvim-neotest/nvim-nio",
@@ -20,6 +21,8 @@ return {
               path = "dlv",
           }
       })
+
+      require('dap-python').setup('/Library/Frameworks/Python.framework/Versions/3.12/bin/python3')
 
       vim.keymap.set("n", "<leader>bp", dap.toggle_breakpoint)
       vim.keymap.set("n", "<space>gb", dap.run_to_cursor)

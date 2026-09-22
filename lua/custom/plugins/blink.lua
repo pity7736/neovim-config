@@ -12,7 +12,10 @@ return {
       nerd_font_variant = "mono",
     },
 
-    completion = { documentation = { auto_show = false } },
+    completion = {
+      documentation = { auto_show = false },
+      keyword = { range = "full" },
+    },
 
     snippets = { preset = "luasnip" },
 
